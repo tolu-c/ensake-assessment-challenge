@@ -1,4 +1,4 @@
-import { DropdownIcon, GlobeIcon } from "@/assets/icons";
+import { LocaleSwitcher } from "@/_components/ui/locale-switcher";
 import { Metadata } from "next";
 import Image from "next/image";
 import { PropsWithChildren } from "react";
@@ -19,13 +19,8 @@ const AuthLayout = ({ children }: PropsWithChildren) => {
           className="size-10 object-center object-cover"
           loading="lazy"
         />
-        <div className="flex items-center gap-1">
-          <GlobeIcon className="size-5 text-icon-soft-400" />
-          <div className="flex items-end gap-0.5">
-            <p className="uppercase text-sm/5 text-sub-600">eng</p>
-            <DropdownIcon className="text-sub-600 size-5" />
-          </div>
-        </div>
+
+        <LocaleSwitcher />
       </div>
       {children}
       <div className="absolute bottom-6 px-11 inset-x-0 flex items-center">

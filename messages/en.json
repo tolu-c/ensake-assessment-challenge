@@ -1,0 +1,9 @@
+{
+  "Login": {
+    "title": "Login to your account",
+    "about": "Enter your details to login."
+  },
+  "LocaleSwitcher": {
+    "locale": "{locale, select, en {ENG} de {GER} other {Unknown}}"
+  }
+}

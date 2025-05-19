@@ -4,9 +4,9 @@ import {
   HomeIcon,
   VerifiedIcon,
 } from "@/assets/icons";
+import { Link } from "@/i18n/navigation";
 import { cookies } from "next/headers";
 import Image from "next/image";
-import Link from "next/link";
 
 export const Sidebar = async () => {
   const cookieStore = await cookies();

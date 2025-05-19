@@ -1,0 +1,9 @@
+{
+  "Login": {
+    "title": "Anmeldung",
+    "about": "Melden Sie sich mit Ihrer E-Mail-Adresse und Ihrem Passwort an."
+  },
+  "LocaleSwitcher": {
+    "locale": "{locale, select, en {ENG} de {GER} other {Unknown}}"
+  }
+}

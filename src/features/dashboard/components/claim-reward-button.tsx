@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/_components/ui/button";
-import { claimReward } from "@/app/actions/claimReward";
+import { claimReward } from "@/app/[locale]/actions/claimReward";
 import { toast } from "sonner";
 
 export const ClaimRewardButton = ({

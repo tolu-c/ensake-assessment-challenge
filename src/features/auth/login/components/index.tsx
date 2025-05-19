@@ -6,13 +6,15 @@ import { Button } from "@/_components/ui/button";
 import { LockIcon, MailIcon } from "@/assets/icons";
 import Link from "next/link";
 import { useActionState, useEffect } from "react";
-import { loginAction } from "@/app/actions/auth";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { loginAction } from "@/app/[locale]/actions/auth";
+import { useTranslations } from "next-intl";
 
 export const Login = () => {
   const [state, action, pending] = useActionState(loginAction, undefined);
   const router = useRouter();
+  const t = useTranslations("Login");
 
   useEffect(() => {
     if (state?.success?.message) {
@@ -43,13 +45,11 @@ export const Login = () => {
         className="w-110 h-auto border-0 lg:border p-8 flex flex-col items-center gap-6 border-stroke-soft-200 rounded-20"
       >
         <div className="w-full flex flex-col items-start lg:items-center gap-2">
-          <div className="w-full flex flex-col items-start lg:items-center gap-1 text-center">
+          <div className="w-full flex flex-col items-start lg:items-center text-left gap-1 lg:text-center">
             <h3 className="text-strong-950 text-2xl font-medium">
-              Login to your account
+              {t("title")}
             </h3>
-            <p className="text-base text-sub-600">
-              Enter your details to login.
-            </p>
+            <p className="text-base text-sub-600">{t("about")}</p>
           </div>
         </div>
         <div className="w-full flex flex-col items-center gap-3">
