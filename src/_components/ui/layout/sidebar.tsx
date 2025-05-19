@@ -1,7 +1,17 @@
-import { DropdownIcon, ExpandIcon, VerifiedIcon } from "@/assets/icons";
+import {
+  DropdownIcon,
+  ExpandIcon,
+  HomeIcon,
+  VerifiedIcon,
+} from "@/assets/icons";
+import { cookies } from "next/headers";
 import Image from "next/image";
+import Link from "next/link";
 
-export const Sidebar = () => {
+export const Sidebar = async () => {
+  const cookieStore = await cookies();
+  const user = cookieStore.get("ensake.user")?.value;
+  const userInfo = user ? JSON.parse(user as string) : undefined;
   return (
     <div className="w-68 h-full flex-none flex-col hidden lg:flex border-r border-stroke-soft-200">
       <div className="p-6 w-full flex items-center gap-3 border-b border-stroke-soft-200">
@@ -21,7 +31,23 @@ export const Sidebar = () => {
           <ExpandIcon className="size-5 text-sub-600" />
         </div>
       </div>
-      <div className="flex-1">nav links</div>
+      <div className="flex-1 p-5 pb-6 bg-white flex flex-col items-start gap-5">
+        <p className="text-xs/4 text-icon-soft-400 font-medium uppercase">
+          MAIN
+        </p>
+        <div className="w-full flex flex-col items-start gap-1">
+          <Link
+            href={"/rewards"}
+            className="px-3 py-2 w-full flex items-center gap-2"
+          >
+            <HomeIcon className="size-5 text-primary-base flex-none" />
+            <p className="flex-1 text-strong-950 hover:text-primary-base text-sm/5 font-medium">
+              Rewards
+            </p>
+            <DropdownIcon className="size-5 text-sub-600 flex-none -rotate-90" />
+          </Link>
+        </div>
+      </div>
       <div className="p-6 w-full flex items-center gap-3 border-t border-stroke-soft-200">
         <Image
           src={"/avatar.png"}
@@ -34,11 +60,11 @@ export const Sidebar = () => {
         <div className="flex-1 flex flex-col items-start gap-1">
           <div className="flex items-start gap-0.5">
             <p className="text-sm/5 text-strong-950 font-medium">
-              Arthur Taylor
+              {userInfo?.first_name} {userInfo?.last_name}
             </p>
             <VerifiedIcon />
           </div>
-          <p className="text-sub-600 text-xs">arthur@alignui.com</p>
+          <p className="text-sub-600 text-xs">{userInfo?.email}</p>
         </div>
         <div className="p-0.5 rounded-md bg-white shadow-x-sm flex items-center justify-center">
           <DropdownIcon className="size-5 text-sub-600 -rotate-90" />

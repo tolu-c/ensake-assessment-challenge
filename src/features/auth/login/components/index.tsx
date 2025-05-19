@@ -17,9 +17,24 @@ export const Login = () => {
   useEffect(() => {
     if (state?.success?.message) {
       toast(state?.success?.message);
-      router.push("/dashboard");
+      router.push("/rewards");
     }
   }, [state?.success?.message, router]);
+
+  const getEmailError = () => {
+    if (state?.errors && "email" in state.errors) {
+      return state.errors.email?.[0];
+    }
+    return undefined;
+  };
+
+  // Helper function to safely access password error
+  const getPasswordError = () => {
+    if (state?.errors && "password" in state.errors) {
+      return state.errors.password?.[0];
+    }
+    return undefined;
+  };
 
   return (
     <div className="w-full flex flex-col items-center gap-20">
@@ -43,7 +58,7 @@ export const Login = () => {
             label="Email Address"
             placeholder="hello@ensake.com"
             icon={<MailIcon className="size-5 text-current" />}
-            error={state?.errors?.email?.[0]}
+            error={getEmailError()}
           />
           <TextInput
             label="Password"
@@ -51,7 +66,7 @@ export const Login = () => {
             icon={<LockIcon className="size-5 text-current" />}
             placeholder="• • • • • • • • • •"
             name="password"
-            error={state?.errors?.password?.[0]}
+            error={getPasswordError()}
           />
         </div>
         <div className="w-full flex items-start justify-between">
@@ -66,7 +81,8 @@ export const Login = () => {
         <Button type="submit" disabled={pending}>
           Log in
         </Button>
-        {state?.errors?.root && (
+
+        {state?.errors && "root" in state.errors && (
           <p className="text-error-base text-sm/5 font-medium -mt-2">
             {state?.errors?.root}
           </p>

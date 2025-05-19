@@ -21,9 +21,21 @@ export const loginAction = async (
   }
   try {
     const res = await api.post("/login", data);
+    const ensakeUser = {
+      first_name: res.data.customer.first_name,
+      last_name: res.data.customer.last_name,
+      email: res.data.customer.email,
+    };
 
     const cookieStore = await cookies();
     cookieStore.set("ensake.token", res.data.customer.token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 5 * 60, // 5 minutes TTL as requested
+      path: "/",
+    });
+
+    cookieStore.set("ensake.user", JSON.stringify(ensakeUser), {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       maxAge: 5 * 60, // 5 minutes TTL as requested

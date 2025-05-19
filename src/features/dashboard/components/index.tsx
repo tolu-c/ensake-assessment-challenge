@@ -3,8 +3,8 @@ import { GiftIcon, StarIcon } from "@/assets/icons";
 import { RewardList } from "./reward-list";
 
 export const Dashboard = ({ rewards }: { rewards: Reward }) => {
-  const totalRewards = rewards.rewards.length;
-  const noOfClaimableRewards = rewards.rewards.filter(
+  const totalRewards = rewards?.rewards?.length;
+  const noOfClaimableRewards = rewards?.rewards?.filter(
     (reward) => reward.claimed === false,
   ).length;
 
