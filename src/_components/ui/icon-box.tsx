@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { ComponentProps } from "react";
 
 export const IconBox = ({
@@ -7,7 +8,10 @@ export const IconBox = ({
 }: ComponentProps<"div">) => {
   return (
     <div
-      className="flex items-center justify-center p-2.5 rounded-10 bg-white relative"
+      className={clsx(
+        "flex items-center justify-center p-2.5 rounded-10 bg-white relative",
+        className,
+      )}
       {...props}
     >
       {children}

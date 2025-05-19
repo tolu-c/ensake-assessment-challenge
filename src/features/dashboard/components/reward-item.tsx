@@ -1,6 +1,4 @@
-import { Button } from "@/_components/ui/button";
 import { Card } from "@/_components/ui/card";
-import { claimReward } from "@/app/actions/claimReward";
 import Image from "next/image";
 import { ClaimRewardButton } from "./claim-reward-button";
 

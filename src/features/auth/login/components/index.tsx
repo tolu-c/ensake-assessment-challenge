@@ -19,7 +19,7 @@ export const Login = () => {
       toast(state?.success?.message);
       router.push("/dashboard");
     }
-  }, [state?.success?.message, router, toast]);
+  }, [state?.success?.message, router]);
 
   return (
     <div className="w-full flex flex-col items-center gap-20">
@@ -73,7 +73,7 @@ export const Login = () => {
         )}
       </form>
       <div className="flex items-center gap-1">
-        <p className="text-sub-600 text-sm/5">Don't have an account?</p>
+        <p className="text-sub-600 text-sm/5">Don&apos;t have an account?</p>
         <Link
           href={"/register"}
           className="text-primary-base underline text-sm/5 font-medium"

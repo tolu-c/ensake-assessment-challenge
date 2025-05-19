@@ -3,7 +3,9 @@ import { getEnsakeDeviceHeader } from "./generateEnsakeHeader";
 import { cookies } from "next/headers";
 
 const api = axios.create({
-  baseURL: "https://core-main-lgmkhu.laravel.cloud/assessment",
+  baseURL:
+    process.env.NEXT_PUBLIC_API_URL ||
+    "https://core-main-lgmkhu.laravel.cloud/assessment",
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
